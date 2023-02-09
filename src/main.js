@@ -24,23 +24,24 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const input = __importStar(require("./input.json"));
+const expectedOutput = __importStar(require("./expected.json"));
 class Preference {
     PrefCode;
     CurrentValue;
 }
 const mypreferences = [];
-for (const x in input) {
-    if (x.endsWith("__c")) {
-        let xValue = "";
-        if (Object.prototype.toString.call(input[x] === '[object Array]')) {
-            console.info({ obj: input[x] });
-            for (const y in input[x]) {
-                console.info({ y });
-            }
+for (const prefCode in input) {
+    if (prefCode.endsWith("__c")) {
+        let currentValue = "";
+        if (Array.isArray(input[prefCode])) {
+            currentValue = input[prefCode].toString();
+        }
+        else {
+            currentValue = input[prefCode];
         }
         const preference = {
-            PrefCode: x,
-            CurrentValue: xValue
+            PrefCode: prefCode,
+            CurrentValue: currentValue
         };
         mypreferences.push(preference);
     }
@@ -57,4 +58,14 @@ const myOutput = {
     IsInternalUpdate: true,
     Preferences: mypreferences
 };
+const myString = JSON.stringify(myOutput);
+console.warn({ myString });
+const expectedString = JSON.stringify(expectedOutput);
+console.warn({ expectedString });
+if (expectedOutput === myOutput) {
+    console.log("success");
+}
+else {
+    console.error("try again");
+}
 //# sourceMappingURL=main.js.map

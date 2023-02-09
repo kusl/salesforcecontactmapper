@@ -1,4 +1,5 @@
 import * as input from './input.json';
+import * as expectedOutput from './expected.json';
 
 class Preference {
     PrefCode: string;
@@ -6,20 +7,17 @@ class Preference {
 }
 
 const mypreferences = [];
-for (const x in input) {
-    if (x.endsWith("__c")) {
-        // console.info({ x });
-        // console.info({ value: input[x] });
-        let xValue = "";
-        if (Object.prototype.toString.call(input[x] === '[object Array]')) {
-            console.info({ obj: input[x] });
-            for (const y in input[x]) {
-                console.info({ y });
-            }
+for (const prefCode in input) {
+    if (prefCode.endsWith("__c")) {
+        let currentValue = "";
+        if (Array.isArray(input[prefCode])) {
+            currentValue = input[prefCode].toString();
+        } else {
+            currentValue = input[prefCode];
         }
-        const preference: Preference = {
-            PrefCode: x,
-            CurrentValue: xValue
+        const preference = {
+            PrefCode: prefCode,
+            CurrentValue: currentValue
         }
         mypreferences.push(preference);
     }
@@ -37,4 +35,16 @@ const myOutput: Output = {
     Email: input.ContactEmail__c,
     IsInternalUpdate: true,
     Preferences: mypreferences
+}
+
+const myString = JSON.stringify(myOutput);
+console.warn({ myString });
+
+const expectedString = JSON.stringify(expectedOutput);
+console.warn({ expectedString });
+
+if (expectedOutput === myOutput) {
+    console.log("success");
+} else {
+    console.error("try again");
 }
