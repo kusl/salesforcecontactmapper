@@ -24,11 +24,37 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const input = __importStar(require("./input.json"));
-console.info({ input });
+class Preference {
+    PrefCode;
+    CurrentValue;
+}
+const mypreferences = [];
 for (const x in input) {
     if (x.endsWith("__c")) {
-        console.info({ x });
-        console.info({ value: input[x] });
+        let xValue = "";
+        if (Object.prototype.toString.call(input[x] === '[object Array]')) {
+            console.info({ obj: input[x] });
+            for (const y in input[x]) {
+                console.info({ y });
+            }
+        }
+        const preference = {
+            PrefCode: x,
+            CurrentValue: xValue
+        };
+        mypreferences.push(preference);
     }
 }
+class Output {
+    ContactId;
+    Email;
+    IsInternalUpdate;
+    Preferences;
+}
+const myOutput = {
+    ContactId: input.Contact__c,
+    Email: input.ContactEmail__c,
+    IsInternalUpdate: true,
+    Preferences: mypreferences
+};
 //# sourceMappingURL=main.js.map
