@@ -25,4 +25,10 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const input = __importStar(require("./input.json"));
 console.info({ input });
+for (const x in input) {
+    if (x.endsWith("__c")) {
+        console.info({ x });
+        console.info({ value: input[x] });
+    }
+}
 //# sourceMappingURL=main.js.map
