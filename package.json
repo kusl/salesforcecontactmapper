@@ -2,6 +2,7 @@
   "name": "SalesforceContactMapper",
   "packageManager": "yarn@3.4.1",
   "devDependencies": {
+    "mocha": "^10.2.0",
     "typescript": "^4.9.5"
   }
 }
