@@ -9,11 +9,18 @@ class Preference {
 const mypreferences = [];
 for (const prefCode in input) {
     if (prefCode.endsWith("__c")) {
+        if (prefCode === "IsInternalUpdate__c") {
+            continue;
+        }
         let currentValue = "";
-        if (Array.isArray(input[prefCode])) {
+        if (input[prefCode] !== null) {
             currentValue = input[prefCode].toString();
-        } else {
-            currentValue = input[prefCode];
+        }
+        if (currentValue === "true") {
+            currentValue = "True";
+        }
+        if (currentValue === "false") {
+            currentValue = "False";
         }
         const preference = {
             PrefCode: prefCode,
