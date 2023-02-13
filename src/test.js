@@ -1,4 +1,37 @@
-const input = { "@odata.etag": "", "ItemInternalId": "c27e4e33-9fa7-430a-9b33-7f98ba1243bd", "CreatedById": "0056C000004E23OQAS", "CreatedDate": "2023-01-30T22:11:20Z", "Id": "a2t6C000001xcrvQAA", "IsDeleted": false, "LastActivityDate": null, "LastModifiedById": "0056C000002ZFwWQAW", "LastModifiedDate": "2023-02-08T13:29:54Z", "LastReferencedDate": "2023-02-03T21:08:01Z", "LastViewedDate": "2023-02-03T21:08:01Z", "Name": "CPN-00000009", "OwnerId": "0056C000004E23OQAS", "SystemModstamp": "2023-02-08T13:29:54Z", "ContactEmail__c": "5f5pgxti@duck.com", "Contact__c": "0036C00000mYIU0QAO", "Email_Opt_In__c": false, "Email__c": null, "Frequency__c": null, "IsInternalUpdate__c": true, "Personal_Email_Address__c": null, "Personal_Mailing_Country__c": null, "Personal_Mailing_State__c": null, "Personal_Mailing_Zip_Code__c": null, "Personal_Phone_Number__c": "9367553366", "SMS_Opt_In__c": true, "Topics_of_Interest__c@odata.type": "#Collection(String)", "Topics_of_Interest__c": ["Perfectly Packaged", "Tools & Services"], "Unsubscribe__c": false };
+const input = {
+    "@odata.etag": "",
+    "ItemInternalId": "c27e4e33-9fa7-430a-9b33-7f98ba1243bd",
+    "CreatedById": "0056C000004E23OQAS",
+    "CreatedDate": "2023-01-30T22:11:20Z",
+    "Id": "a2t6C000001xcrvQAA",
+    "IsDeleted": false,
+    "LastActivityDate": null,
+    "LastModifiedById": "0056C000002ZFwWQAW",
+    "LastModifiedDate": "2023-02-08T13:29:54Z",
+    "LastReferencedDate": "2023-02-03T21:08:01Z",
+    "LastViewedDate": "2023-02-03T21:08:01Z",
+    "Name": "CPN-00000009",
+    "OwnerId": "0056C000004E23OQAS",
+    "SystemModstamp": "2023-02-08T13:29:54Z",
+    "ContactEmail__c": "5f5pgxti@duck.com",
+    "Contact__c": "0036C00000mYIU0QAO",
+    "Email_Opt_In__c": false,
+    "Email__c": null,
+    "Frequency__c": null,
+    "IsInternalUpdate__c": true,
+    "Personal_Email_Address__c": null,
+    "Personal_Mailing_Country__c": null,
+    "Personal_Mailing_State__c": null,
+    "Personal_Mailing_Zip_Code__c": null,
+    "Personal_Phone_Number__c": "9367553366",
+    "SMS_Opt_In__c": true,
+    "Topics_of_Interest__c@odata.type": "#Collection(String)",
+    "Topics_of_Interest__c": [
+        "Perfectly Packaged",
+        "Tools & Services"
+    ],
+    "Unsubscribe__c": false
+};
 
 const expectedOutput = {
     ContactId: '0036C00000mYIU0QAO',
@@ -58,14 +91,14 @@ const myOutput = {
     Preferences: mypreferences
 }
 
-console.info(expectedOutput);
-console.info(myOutput);
+// console.info(expectedOutput);
+// console.info(myOutput);
 
 const myString = JSON.stringify(myOutput);
-console.warn({ myString });
+// console.warn({ myString });
 
 const expectedString = JSON.stringify(expectedOutput);
-console.warn({ expectedString });
+// console.warn({ expectedString });
 
 if (myString === expectedString) {
     console.log("success");

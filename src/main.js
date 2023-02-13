@@ -29,7 +29,7 @@ class Preference {
     PrefCode;
     CurrentValue;
 }
-const mypreferences = [];
+const mypreferences = Array();
 for (const prefCode in input) {
     if (prefCode.endsWith("__c")) {
         if (prefCode === "IsInternalUpdate__c") {
@@ -64,11 +64,28 @@ const myOutput = {
     IsInternalUpdate: true,
     Preferences: mypreferences
 };
-const myString = JSON.stringify(myOutput);
-console.warn({ myString });
-const expectedString = JSON.stringify(expectedOutput);
-console.warn({ expectedString });
-if (expectedOutput === myOutput) {
+function AreTwoOutputsEqual(actual, expected) {
+    if (actual.ContactId !== expected.ContactId) {
+        return false;
+    }
+    if (actual.Email !== expected.Email) {
+        return false;
+    }
+    if (actual.IsInternalUpdate !== expected.IsInternalUpdate) {
+        return false;
+    }
+    if (actual.Preferences.length !== expected.Preferences.length) {
+        return false;
+    }
+    for (const expectedPreference in expected.Preferences) {
+        if (expected.Preferences[expectedPreference].PrefCode !== actual.Preferences[expectedPreference].PrefCode
+            || expected.Preferences[expectedPreference].CurrentValue !== actual.Preferences[expectedPreference].CurrentValue) {
+            return false;
+        }
+    }
+    return true;
+}
+if (AreTwoOutputsEqual(myOutput, expectedOutput)) {
     console.log("success");
 }
 else {
