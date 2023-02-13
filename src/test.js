@@ -89,14 +89,22 @@ const expectedOutput = {
     ]
 };
 
+// const input = workflowContext.trigger.outputs.body;
 const mypreferences = [];
 for (const prefCode in input) {
     if (prefCode.endsWith("__c")) {
+        if (prefCode === "IsInternalUpdate__c") {
+            continue;
+        }
         let currentValue = "";
-        if (Array.isArray(input[prefCode])) {
+        if (input[prefCode] !== null) {
             currentValue = input[prefCode].toString();
-        } else {
-            currentValue = input[prefCode];
+        }
+        if (currentValue === "true") {
+            currentValue = "True";
+        }
+        if (currentValue === "false") {
+            currentValue = "False";
         }
         const preference = {
             PrefCode: prefCode,
@@ -105,5 +113,13 @@ for (const prefCode in input) {
         mypreferences.push(preference);
     }
 }
+const myOutput = {
+    ContactId: input.Contact__c,
+    Email: input.ContactEmail__c,
+    IsInternalUpdate: true,
+    Preferences: mypreferences
+}
+
+return myOutput;
 
 console.info(JSON.stringify(mypreferences));
