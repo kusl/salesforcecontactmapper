@@ -24,16 +24,14 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AreTwoOutputsEqual = void 0;
+const chai_1 = require("chai");
 const input = __importStar(require("./input.json"));
 const expectedOutput = __importStar(require("./expected.json"));
 const main_1 = require("../src/main");
-const myOutput = (0, main_1.MyMap)(input);
-const assert = require('assert');
-describe('MyMap', function () {
-    describe('MyMap', function () {
-        it('actual value must match expected value', function () {
-            assert.True(AreTwoOutputsEqual(myOutput, expectedOutput));
-        });
+const actualOutput = (0, main_1.MyMap)(input);
+describe('Array', function () {
+    it('MyMap output should match expectation', function () {
+        (0, chai_1.assert)(AreTwoOutputsEqual(actualOutput, expectedOutput), "MyMap output did not match expected output");
     });
 });
 function AreTwoOutputsEqual(actual, expected) {
