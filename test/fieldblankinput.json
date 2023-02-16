@@ -1,0 +1,7 @@
+{
+    "PrefCode": "Frequency__c",
+    "DisplayName": "Frequency",
+    "DataType": "PICKLIST",
+    "FieldSize": 255
+  }
+  

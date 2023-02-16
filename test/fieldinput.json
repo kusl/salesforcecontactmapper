@@ -1,0 +1,12 @@
+{
+    "PrefCode": "Frequency__c",
+    "DisplayName": "Frequency",
+    "DataType": "PICKLIST",
+    "FieldSize": 255,
+    "Options": [
+        "Daily",
+        "Weekly",
+        "Twice Weekly",
+        "Bi-Weekly"
+    ]
+}
