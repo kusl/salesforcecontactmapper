@@ -19,7 +19,8 @@ describe('Field1', function () {
 const actualBlankOutput = MyFieldMap(input2);
 describe('Field2', function () {
     it('MyFieldMap Output should have no options if input has no options', function () {
-        assert(actualOutput.Options.length === 0, "Output should have no options if input has no options");
+        console.info({ actual2: actualBlankOutput.Options });
+        assert(actualBlankOutput.Options.length === 0, "Output should have no options if input has no options");
         console.info({ expected2 });
     });
 });

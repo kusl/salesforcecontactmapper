@@ -39,7 +39,8 @@ describe('Field1', function () {
 const actualBlankOutput = (0, field_1.MyFieldMap)(input2);
 describe('Field2', function () {
     it('MyFieldMap Output should have no options if input has no options', function () {
-        (0, chai_1.assert)(actualOutput.Options.length === 0, "Output should have no options if input has no options");
+        console.info({ actual2: actualBlankOutput.Options });
+        (0, chai_1.assert)(actualBlankOutput.Options.length === 0, "Output should have no options if input has no options");
         console.info({ expected2 });
     });
 });
